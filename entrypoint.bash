@@ -2,9 +2,18 @@
 
 source logging.bash
 
-echo "$CRON_SCHEDULE bash /script.bash" >> cron_job
-crontab cron_job
+if [[ $CRON_SCHEDULE == "now" ]]; then
+  info "Running the job now"
+  bash /script.bash
+else
+  debug "Scheduling cron job"
 
-touch /job.log
+  echo "$CRON_SCHEDULE bash /script.bash" >> cron_job
+  crontab cron_job
 
-tail -f /job.log
+  touch /job.log
+
+  debug "Waiting to trigger cron job"
+  tail -f /job.log
+
+fi

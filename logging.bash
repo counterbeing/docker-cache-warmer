@@ -2,12 +2,14 @@
 
 debug() {
   if [[ ! -z $DEBUG ]]; then
-    echo "[docker-cache-warmer] DEBUG$@"
+    MSG="[docker-cache-warmer] DEBUG $@"
+    echo $MSG | tee -a /job.log
   fi
 }
 
 info() {
-  echo "[docker-cache-warmer] $@"
+  MSG="[docker-cache-warmer] $@"
+  echo $MSG | tee -a /job.log
 }
 
 debug "Debugging is enabled $(date)"

@@ -4,7 +4,7 @@ This is a small and simple docker image that runs a cron job to fetch assets fro
 
 - `ASSET_PATH_MANIFEST_URL`: A place that is readable publicly, and lists one asset per line without the domain.
 - `HOSTS_COMMAND`: A command that returns a list of newline separated hosts. If you want to hard code it you could use something like `echo "http://cach1.domain.com\nhttp://cache2.domain.com"`. For more complex scenarios you could use something like `nslookup` to find multiple hosts for a dns record, as in the example below.
-- `CRON_SCHEDULE`: This is your basic cron syntax that will state how often to run the command. For example, to run hourly, you'd use this `0 * * * *`. Here's a [handy calculator](https://crontab.guru/#0_*_*_*_*) if it's helpful.
+- `CRON_SCHEDULE`: This is your basic cron syntax that will state how often to run the command. For example, to run hourly, you'd use this `0 * * * *`. Here's a [handy calculator](https://crontab.guru/#0_*_*_*_*) if it's helpful. You can also set this to "now" if you just want it to run once and exit.
 - DEBUG: If set it will tell you what addresses it's trying to hit in STDOUT
 
 ## Example
